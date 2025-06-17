@@ -1,5 +1,5 @@
 import "./globals.css";
-import Navbar from "../Components/Navbar";
+import Sidebar from "@/Components/Sidebar";
 
 
 export default function RootLayout({
@@ -9,8 +9,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-[100vh] flex flex-row">
+        <Sidebar/>
         {children}
+        
       </body>
     </html>
   );

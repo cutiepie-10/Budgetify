@@ -9,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-[100vh] flex flex-row">
+      <body className="min-h-[100vh] flex flex-row bg-gray-100">
         <Sidebar/>
         {children}
         

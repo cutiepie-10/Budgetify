@@ -9,9 +9,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-[100vh] flex flex-row bg-gray-100">
-        <Sidebar/>
-        {children}
+      <body>
+        <main className="min-h-[100vh] flex flex-row bg-gray-100">
+          <Sidebar/>
+          {children}
+        </main>
+        
         
       </body>
     </html>

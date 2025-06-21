@@ -1,8 +1,15 @@
 package main
 
 import (
+	"fmt"
+	"log"
+	"log/slog"
+
 	"budgify.com/backend/internal/config"
 	"budgify.com/backend/internal/database"
+	"budgify.com/backend/internal/handlers"
+	routes "budgify.com/backend/internal/routes"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,6 +20,29 @@ func main() {
 		ConnectionURI: cfg.ConnectionURI,
 		Passwd:        cfg.Psswd,
 	}
-	client := database.ConnectWithMongoDb(user)
-	router.Run(cfg.Port)
+	slog.Info("Got the basic user info", slog.String("User URI", user.ConnectionURI), slog.String("User Psswd", user.Passwd))
+	client, err := database.ConnectWithMongoDb(user)
+	if err != nil {
+
+	}
+	handler := &handlers.Handler{
+		Client: client,
+	}
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowCredentials: true,
+		AllowHeaders:     []string{"Content-Type", "Authorization", "Origin"},
+	}))
+
+	routes.UserRouter(handler, router)
+
+	quit := make(chan int)
+	go (func() {
+		router.Run(fmt.Sprintf("localhost:%v", cfg.Port))
+		quit <- 1
+	})()
+
+	log.Println("The server has started on:", cfg.Port)
+	<-quit
 }

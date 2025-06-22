@@ -1,10 +1,10 @@
-import { BiSolidHome,BiSolidWalletAlt } from "react-icons/bi";
+import { BiSolidWalletAlt,BiSolidDashboard } from "react-icons/bi";
 const Sidebar= ()=>{
     const sideBarItems = [
         {
             id:1,
-            title:"Home",
-            imageComponent:<BiSolidHome className="flex-[0.3]"/>,
+            title:"Dashboard",
+            imageComponent:<BiSolidDashboard className="flex-[0.3]"/>,
         },
         {
             id:2,

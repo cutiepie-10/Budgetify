@@ -1,4 +1,5 @@
-const Layout = ({children,}:{children:React.ReactNode})=>{
+
+const Layout = ({children}:{children:React.ReactNode})=>{
     return (
         <div className="flex-5">
             {children}

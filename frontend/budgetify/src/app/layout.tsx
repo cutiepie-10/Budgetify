@@ -1,6 +1,6 @@
 import "./globals.css";
 import Sidebar from "@/Components/Sidebar";
-
+import {UserProvider} from '@/Components/ReducerContext/userReducer'
 
 export default function RootLayout({
   children,
@@ -11,8 +11,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <main className="min-h-[100vh] flex flex-row bg-gray-100">
-          <Sidebar/>
-          {children}
+          <UserProvider>
+              <Sidebar/>
+              {children}
+          </UserProvider>
+          
         </main>
         
         

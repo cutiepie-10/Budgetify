@@ -1,5 +1,5 @@
 import "./globals.css";
-import Sidebar from "@/Components/Sidebar";
+import Sidebar from "@/Components/Sidebar/Sidebar";
 import {UserProvider} from '@/Components/ReducerContext/userReducer'
 
 export default function RootLayout({

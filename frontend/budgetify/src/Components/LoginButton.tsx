@@ -6,7 +6,6 @@ import { CgProfile } from "react-icons/cg";
 import {useContext} from 'react';
 const LogInButton = ()=>{
     const user = useContext(UserContext);
-    console.log(user);
     return(
         <div>
             {(user.first_name===null)?

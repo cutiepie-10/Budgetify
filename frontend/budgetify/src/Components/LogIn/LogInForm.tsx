@@ -65,13 +65,10 @@ const LogInForm= ()=>{
                     {...register("password",{required:true})}/>
                     
                 </div>
-                <Link href="/">
                 <button className="bg-green-600 text-white p-1.5 font-semibold rounded-xl
                      hover:opacity-75 user-select:none cursor-pointer">
                         Submit
-                    </button>
-                </Link>
-                
+                </button>
             </form>
     );
 }

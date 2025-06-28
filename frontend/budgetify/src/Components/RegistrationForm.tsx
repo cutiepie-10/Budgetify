@@ -7,7 +7,7 @@ interface registerFormInputs{
     email:string,
     password:string,
 }
-
+//fetch function creation
 const RegistrationForm= ()=>{
     const {register,handleSubmit,formState:{errors}} = useForm<registerFormInputs>()
     const userDispatcher= useUserDispatch();

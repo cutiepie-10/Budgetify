@@ -18,7 +18,7 @@ type User struct {
 	Passwd        string
 }
 
-func ConnectWithMongoDb(user *User) (*mongo.Client, error) {
+func ConnectWithMongoDb(user *User) (*mongo.Database, error) {
 	tlsConfig, err := config.GetTLSConfig()
 	if err != nil || tlsConfig == nil {
 		slog.Error("could not get tls config for the mongoDB server", slog.String("error:", err.Error()))
@@ -37,5 +37,5 @@ func ConnectWithMongoDb(user *User) (*mongo.Client, error) {
 		return nil, err
 	}
 	log.Println("Pinged your deployment. You are successfully connected to MongDB!", result)
-	return client, nil
+	return client.Database("budgetify"), nil
 }

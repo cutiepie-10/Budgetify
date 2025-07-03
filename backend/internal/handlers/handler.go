@@ -5,5 +5,5 @@ import (
 )
 
 type Handler struct {
-	Client *mongo.Client
+	Database *mongo.Database
 }

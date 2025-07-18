@@ -1,6 +1,8 @@
 'use client';
 import type { Points } from "./useContextMenu";
 import { useExpenseDispatch, useBillDispatcher, useExpenseContext,useBillContext } from "../ReducerContext/expenditureReducer";
+import { initBill } from "@/models/Bill";
+import { initExpenditure } from "@/models/Expenditure";
 const ItemList = [
     {
         id:1,
@@ -24,42 +26,37 @@ export const ContextMenu=(prop:{
     const dispatchBill= useBillDispatcher();
     const expense = useExpenseContext();
     const bills = useBillContext();
-    function onClick(name:string){
+    const onClick=(name:string)=>{
         switch (name){
             case 'Add Bill':{
                 dispatchBill({
                     type:'bill/new',
                     bill:{
-                        id:0,
+                        ...initBill,
                         parentId:prop.coord.id,
-                        name:'',
-                        in:false,
-                        amount:0.0,
                     }
                 });
                 dispatchExpense({
                     type:'expense/update',
                     expenditure:{
-                        ...expense[prop.coord.id],
-                        bill:[...expense[prop.coord.id].bill,bills.length],
+                        ...expense[prop.coord.id-1],
+                        bill:[...expense[prop.coord.id-1].bill,bills.length],
                     }
                 });
+                return;
             }
             case 'Add Category':{
+                console.log('adding category');
                 dispatchExpense({
-                    type:'expense/add',
+                    type:'expense/new',
                     expenditure:{
-                        id:0,
-                        bill:[],
-                        alloted:0.0,
-                        spent:0.0,
-                        type:'',
+                       ...initExpenditure,
                     }
-                })
+                });
+                return;
             }
         }
-    }
-    console.log(prop.coord.x,prop.coord.y);
+    };
     return(
         <div className={`bg-gray-800 opacity-85 fixed p-1 
          z-3 flex flex-col justify-start items-center rounded-md`}
@@ -74,7 +71,7 @@ export const ContextMenu=(prop:{
                             className="text-white text-sm p-[0.5px]  
                             hover:transition-opacity hover:duration-150 
                             hover:opacity-80 hover:bg-gray-600 active:opacity-30 
-                            transition-opacity duration-150">
+                            transition-opacity duration-150 cursor-pointer">
                                 {data.name}
                             </li>
                         );

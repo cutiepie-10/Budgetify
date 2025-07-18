@@ -1,14 +1,16 @@
 export const initExpenditure:Expenditure = {
-    type:"",
+    type:" ",
     alloted:0.0,
     spent:0.0,
-    id:0,
+    id:"0",
     bill:[],
 }
 export interface Expenditure{
-    id:number,
-    type:string,
+    id:string,
+    type?:string,
     alloted:number,
     spent:number,
-    bill:number[],
+    bill:string[],
+    createdAt?:number,
+    updatedAt?:number,
 }

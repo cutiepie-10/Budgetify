@@ -1,7 +1,7 @@
 'use client';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import { useUserDispatch } from '../ReducerContext/userReducer';
-
+import {saveCredentials} from  '@/utils/Fetcher/Credentials';
 interface LogInFormInputs{
     email:string,
     password:string,
@@ -35,6 +35,7 @@ const LogInForm= ()=>{
                 }
             });
             console.log(`${respo.first_name} is successfully logged in`);
+            saveCredentials(respo.token,respo.refresh_token);
         })
         .catch(err=>{
             console.error(`error occured while logging in ${err}`);

@@ -7,7 +7,7 @@ const sideBarItems = [
         {
             id:1,
             title:"Dashboard",
-            imageComponent:<BiSolidDashboard className={`flex-5 text-blue-600 group-hover:text-green-400`}/>,
+            imageComponent:<BiSolidDashboard className={`flex-5 text-blue-600  group-hover:text-green-400`}/>,
             link:"/",
         },
         {
@@ -19,7 +19,6 @@ const sideBarItems = [
     ];
 const SidebarItemList = ()=>{
     const path = usePathname();
-    console.log(path);
     return (
         <ul className="flex flex-3 text-black flex-col justify-items-start gap-4 p-2 w-full">
                 {sideBarItems.map((items)=>{
@@ -28,9 +27,9 @@ const SidebarItemList = ()=>{
                     <Link href={items.link}
                          className={`flex hover:text-green-400 
                         transition hover:transition active:bg-green-700 
-                        flex-col gap-1 items-center cursor-pointer group ${path===items.link?`text-color-600`:``}`}>
+                        flex-col gap-1 items-center cursor-pointer group ${path===items.link?`bg-green-200 rounded-sm p-2`:``}`}>
                              {items.imageComponent}
-                             <p className={`${path===items.link?`text-color-600`:``}flex-1 text-sm group-active:text-green-400 group-hover:text-green-400`}>
+                             <p className={`${path===items.link?`text-green-600`:``}flex-1 text-sm group-active:text-green-400 group-hover:text-green-400`}>
                                 {items.title}
                              </p>
                      </Link>

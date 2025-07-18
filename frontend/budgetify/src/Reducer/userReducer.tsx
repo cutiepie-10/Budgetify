@@ -39,7 +39,7 @@ export function UserReducer(state:User,action:{type:string,
             return user;
             }
         default:{
-            throw new Error("invalid type action");
+            throw new Error("invalid type of action");
         }
     }
 }

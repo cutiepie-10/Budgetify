@@ -1,14 +1,16 @@
 export interface Bill{
-    parentId:number,
-    id:number,
+    parentId:string,
+    id:string,
     amount:number,
     name:string,
     in?:boolean,
+    createdAt?:number,
+    updatedAt?:number,
 }
 export const initBill:Bill={
-    parentId:0,
-    id:0,
+    parentId:"0",
+    id:"0",
     amount:0.0,
-    name:'',
+    name:' ',
     in:false,
 };
